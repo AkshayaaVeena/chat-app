@@ -8,7 +8,7 @@ export const signup = async (req,res)=>
       try{
         if(!fullName || !email || !password)
                  {
-                    return res.send(400).json({message:"All fields are required"})
+                    return res.status(400).json({message:"All fields are required"})
                  }
           if(!validator.isEmail(email)) {
          return res.status(400).json({message:"Invalid email format"});
@@ -61,7 +61,7 @@ export const login = async(req,res)=>{
             const isPasswordCorrect =await bcrypt.compare(password,user.password)
             if(!isPasswordCorrect)
             {
-                return res.satsu(400).jso({message:"Invalid Password"});
+                return res.satus(400).jso({message:"Invalid Password"});
             }
             generateToken(user._id,res)
          res.status(200).json(
