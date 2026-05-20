@@ -2,7 +2,6 @@ import cloudinary from "../lib/cloudinary.js";
 import { generateToken } from "../lib/utils.js";
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
-import validator from 'validator';
 export const signup = async (req,res)=>
     {const {fullName,email,password}=req.body;
       try{
@@ -10,9 +9,7 @@ export const signup = async (req,res)=>
                  {
                     return res.status(400).json({message:"All fields are required"})
                  }
-          if(!validator.isEmail(email)) {
-         return res.status(400).json({message:"Invalid email format"});
-}      
+         
                 
                 if(password.length < 6)
          {
